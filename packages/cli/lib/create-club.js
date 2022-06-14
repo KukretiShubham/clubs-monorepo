@@ -1,5 +1,5 @@
 'use strict'
-const __awaiter =
+var __awaiter =
   (this && this.__awaiter) ||
   function (thisArg, _arguments, P, generator) {
     function adopt(value) {
@@ -19,7 +19,7 @@ const __awaiter =
       }
       function rejected(value) {
         try {
-          step(generator.throw(value))
+          step(generator['throw'](value))
         } catch (e) {
           reject(e)
         }
@@ -32,22 +32,22 @@ const __awaiter =
       step((generator = generator.apply(thisArg, _arguments || [])).next())
     })
   }
-const __generator =
+var __generator =
   (this && this.__generator) ||
   function (thisArg, body) {
-    let _ = {
-      label: 0,
-      sent: function () {
-        if (t[0] & 1) throw t[1]
-        return t[1]
+    var _ = {
+        label: 0,
+        sent: function () {
+          if (t[0] & 1) throw t[1]
+          return t[1]
+        },
+        trys: [],
+        ops: [],
       },
-      trys: [],
-      ops: [],
-    }
-    let f
-    let y
-    let t
-    let g
+      f,
+      y,
+      t,
+      g
     return (
       (g = { next: verb(0), throw: verb(1), return: verb(2) }),
       typeof Symbol === 'function' &&
@@ -70,9 +70,9 @@ const __generator =
             y &&
               (t =
                 op[0] & 2
-                  ? y.return
+                  ? y['return']
                   : op[0]
-                  ? y.throw || ((t = y.return) && t.call(y), 0)
+                  ? y['throw'] || ((t = y['return']) && t.call(y), 0)
                   : y.next) &&
               !(t = t.call(y, op[1])).done)
           )
@@ -132,31 +132,33 @@ const __generator =
       return { value: op[0] ? op[1] : void 0, done: true }
     }
   }
-const __importDefault =
+var __importDefault =
   (this && this.__importDefault) ||
   function (mod) {
     return mod && mod.__esModule ? mod : { default: mod }
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 exports.createClub = void 0
-const fs_extra_1 = __importDefault(require('fs-extra'))
-const inquirer_1 = __importDefault(require('inquirer'))
-const path_1 = __importDefault(require('path'))
-const chalk_1 = __importDefault(require('chalk'))
-const package_info_1 = require('./util/package-info')
-const createClub = function (argv) {
+var fs_extra_1 = __importDefault(require('fs-extra'))
+var inquirer_1 = __importDefault(require('inquirer'))
+var path_1 = __importDefault(require('path'))
+var chalk_1 = __importDefault(require('chalk'))
+var package_info_1 = require('./util/package-info')
+var createClub = function (argv) {
   return __awaiter(void 0, void 0, void 0, function () {
-    let packageRoot, responses, e_1, projectRoot
+    var packageRoot, responses, e_1, projectRoot
     return __generator(this, function (_a) {
       switch (_a.label) {
         case 0:
-          console.log(chalk_1.default.cyan('Welcome to Clubs'))
+          console.log(chalk_1.default.cyan('Welcome to Clubs!'))
+          console.log(chalk_1.default.cyan('Test update'))
           packageRoot = (0, package_info_1.getPackageRoot)()
+          console.log('package root is: ', packageRoot)
           _a.label = 1
         case 1:
           _a.trys.push([1, 3, , 4])
           return [
-            4 /* yield */,
+            4 /*yield*/,
             inquirer_1.default.prompt([
               {
                 name: 'projectRoot',
@@ -168,20 +170,20 @@ const createClub = function (argv) {
           ]
         case 2:
           responses = _a.sent()
-          return [3 /* break */, 4]
+          return [3 /*break*/, 4]
         case 3:
           e_1 = _a.sent()
           if (e_1 === '') {
-            return [2 /* return */]
+            return [2 /*return*/]
           }
           throw e_1
         case 4:
           projectRoot = responses.projectRoot
-          return [4 /* yield */, fs_extra_1.default.ensureDir(projectRoot)]
+          return [4 /*yield*/, fs_extra_1.default.ensureDir(projectRoot)]
         case 5:
           _a.sent()
           return [
-            4 /* yield */,
+            4 /*yield*/,
             fs_extra_1.default.copy(
               path_1.default.join(
                 packageRoot,
@@ -193,7 +195,7 @@ const createClub = function (argv) {
           ]
         case 6:
           _a.sent()
-          return [2 /* return */]
+          return [2 /*return*/]
       }
     })
   })

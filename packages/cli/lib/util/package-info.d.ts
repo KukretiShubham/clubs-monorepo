@@ -1,4 +1,4 @@
-export declare function getMonoRepoPackageJsonPath(): string
+export declare function getPackageJsonPath(): string
 export declare function getPackageRoot(): string
 export interface PackageJson {
   name: string
@@ -7,6 +7,6 @@ export interface PackageJson {
     node: string
   }
 }
-export declare function findMonoRepoPackageJson(): string | undefined
+export declare function findClosestPackageJson(file: string): string | undefined
 export declare function getPackageJson(): Promise<PackageJson>
 export declare function getHardhatVersion(): string | null

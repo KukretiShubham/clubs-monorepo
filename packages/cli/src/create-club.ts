@@ -6,9 +6,11 @@ import chalk from 'chalk'
 import { getPackageRoot } from './util/package-info'
 
 export const createClub = async (argv: yargs.Argv<{}>) => {
-  console.log(chalk.cyan('Welcome to Clubs'))
+  console.log(chalk.cyan('Welcome to Clubs!'))
+  console.log(chalk.cyan('Test update'))
 
   const packageRoot = getPackageRoot()
+  console.log('package root is: ', packageRoot)
 
   let responses: {
     projectRoot: string

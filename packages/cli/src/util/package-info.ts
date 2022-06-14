@@ -2,12 +2,12 @@ import findup from 'find-up'
 import fsExtra from 'fs-extra'
 import path from 'path'
 
-export function getMonoRepoPackageJsonPath(): string {
-  return findMonoRepoPackageJson()!
+export function getPackageJsonPath(): string {
+  return findClosestPackageJson(__filename)!
 }
 
 export function getPackageRoot(): string {
-  const packageJsonPath = getMonoRepoPackageJsonPath()
+  const packageJsonPath = getPackageJsonPath()
 
   return path.dirname(packageJsonPath)
 }
@@ -20,10 +20,8 @@ export interface PackageJson {
   }
 }
 
-export function findMonoRepoPackageJson() {
-  // console.log('file is: ', file)
-  return findup.sync('package.json', { cwd: '../../' })
-  // return findup.sync('package.json', { cwd: path.dirname(file) })
+export function findClosestPackageJson(file: string) {
+  return findup.sync('package.json', { cwd: path.dirname(file) })
 }
 
 export async function getPackageJson(): Promise<PackageJson> {
@@ -32,7 +30,7 @@ export async function getPackageJson(): Promise<PackageJson> {
 }
 
 export function getHardhatVersion(): string | null {
-  const packageJsonPath = findMonoRepoPackageJson()
+  const packageJsonPath = findClosestPackageJson(__filename)
 
   if (!packageJsonPath) {
     return null

@@ -1,5 +1,5 @@
 'use strict'
-const __awaiter =
+var __awaiter =
   (this && this.__awaiter) ||
   function (thisArg, _arguments, P, generator) {
     function adopt(value) {
@@ -19,7 +19,7 @@ const __awaiter =
       }
       function rejected(value) {
         try {
-          step(generator.throw(value))
+          step(generator['throw'](value))
         } catch (e) {
           reject(e)
         }
@@ -32,22 +32,22 @@ const __awaiter =
       step((generator = generator.apply(thisArg, _arguments || [])).next())
     })
   }
-const __generator =
+var __generator =
   (this && this.__generator) ||
   function (thisArg, body) {
-    let _ = {
-      label: 0,
-      sent: function () {
-        if (t[0] & 1) throw t[1]
-        return t[1]
+    var _ = {
+        label: 0,
+        sent: function () {
+          if (t[0] & 1) throw t[1]
+          return t[1]
+        },
+        trys: [],
+        ops: [],
       },
-      trys: [],
-      ops: [],
-    }
-    let f
-    let y
-    let t
-    let g
+      f,
+      y,
+      t,
+      g
     return (
       (g = { next: verb(0), throw: verb(1), return: verb(2) }),
       typeof Symbol === 'function' &&
@@ -70,9 +70,9 @@ const __generator =
             y &&
               (t =
                 op[0] & 2
-                  ? y.return
+                  ? y['return']
                   : op[0]
-                  ? y.throw || ((t = y.return) && t.call(y), 0)
+                  ? y['throw'] || ((t = y['return']) && t.call(y), 0)
                   : y.next) &&
               !(t = t.call(y, op[1])).done)
           )
@@ -132,7 +132,7 @@ const __generator =
       return { value: op[0] ? op[1] : void 0, done: true }
     }
   }
-const __importDefault =
+var __importDefault =
   (this && this.__importDefault) ||
   function (mod) {
     return mod && mod.__esModule ? mod : { default: mod }
@@ -140,35 +140,35 @@ const __importDefault =
 Object.defineProperty(exports, '__esModule', { value: true })
 exports.getHardhatVersion =
   exports.getPackageJson =
-  exports.findMonoRepoPackageJson =
+  exports.findClosestPackageJson =
   exports.getPackageRoot =
-  exports.getMonoRepoPackageJsonPath =
+  exports.getPackageJsonPath =
     void 0
-const find_up_1 = __importDefault(require('find-up'))
-const fs_extra_1 = __importDefault(require('fs-extra'))
-const path_1 = __importDefault(require('path'))
-function getMonoRepoPackageJsonPath() {
-  return findMonoRepoPackageJson()
+var find_up_1 = __importDefault(require('find-up'))
+var fs_extra_1 = __importDefault(require('fs-extra'))
+var path_1 = __importDefault(require('path'))
+function getPackageJsonPath() {
+  return findClosestPackageJson(__filename)
 }
-exports.getMonoRepoPackageJsonPath = getMonoRepoPackageJsonPath
+exports.getPackageJsonPath = getPackageJsonPath
 function getPackageRoot() {
-  const packageJsonPath = getMonoRepoPackageJsonPath()
+  var packageJsonPath = getPackageJsonPath()
   return path_1.default.dirname(packageJsonPath)
 }
 exports.getPackageRoot = getPackageRoot
-function findMonoRepoPackageJson() {
-  // console.log('file is: ', file)
-  return find_up_1.default.sync('package.json', { cwd: '../../' })
-  // return findup.sync('package.json', { cwd: path.dirname(file) })
+function findClosestPackageJson(file) {
+  return find_up_1.default.sync('package.json', {
+    cwd: path_1.default.dirname(file),
+  })
 }
-exports.findMonoRepoPackageJson = findMonoRepoPackageJson
+exports.findClosestPackageJson = findClosestPackageJson
 function getPackageJson() {
   return __awaiter(this, void 0, void 0, function () {
-    let root
+    var root
     return __generator(this, function (_a) {
       root = getPackageRoot()
       return [
-        2 /* return */,
+        2 /*return*/,
         fs_extra_1.default.readJSON(path_1.default.join(root, 'package.json')),
       ]
     })
@@ -176,12 +176,12 @@ function getPackageJson() {
 }
 exports.getPackageJson = getPackageJson
 function getHardhatVersion() {
-  const packageJsonPath = findMonoRepoPackageJson()
+  var packageJsonPath = findClosestPackageJson(__filename)
   if (!packageJsonPath) {
     return null
   }
   try {
-    const packageJson = fs_extra_1.default.readJsonSync(packageJsonPath)
+    var packageJson = fs_extra_1.default.readJsonSync(packageJsonPath)
     return packageJson.version
   } catch (_a) {
     return null
