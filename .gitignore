@@ -23,3 +23,5 @@ yarn-error.log*
 
 # use yarn
 package-lock.json
+
+packages/cli/lib

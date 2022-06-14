@@ -9,7 +9,7 @@
     "lint:eslint": "eslint --fix '**/*.{js,mjs,cjs}'",
     "lint:prettier": "prettier -w --ignore-path .astro.prettierignore --no-error-on-unmatched-pattern .",
     "lint:prettier:astro": "yarn prettier -w **/*.astro || echo '🙈 > ignored some errors of prettier for astro'",
-    "prepare": "husky install",
+    "prepare": "husky install && tsc -p ./packages/cli",
     "buildCli": "tsc -p ./packages/cli"
   },
   "bin": {
