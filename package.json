@@ -12,6 +12,9 @@
     "lint:prettier:astro": "yarn prettier -w **/*.astro || echo '🙈 > ignored some errors of prettier for astro'",
     "prepare": "husky install"
   },
+  "bin": {
+    "clubs": "./packages/cli/lib/index.js"
+  },
   "devDependencies": {
     "@types/dotenv": "8.2.0",
     "@types/ramda": "0.28.14",
